@@ -8,8 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\products\" />
     <Folder Include="src\" />
     <Folder Include="src\modules\" />
+    <Folder Include="src\modules\products\" />
+    <Folder Include="src\modules\products\Application\" />
+    <Folder Include="src\modules\products\Domain\" />
+    <Folder Include="src\modules\products\Infrastructure\" />
+    <Folder Include="src\modules\products\Infrastructure\Entity\" />
+    <Folder Include="src\modules\products\Infrastructure\Repositories\" />
     <Folder Include="src\modules\provider\" />
     <Folder Include="src\modules\provider\Application\" />
     <Folder Include="src\modules\provider\Application\Interfaces\" />

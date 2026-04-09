@@ -10,7 +10,7 @@ public class DbContextFactory
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsetting.json", optional: true)
+                .AddJsonFile("appsettings.json", optional: true)
                 .AddEnvironmentVariables()
                 .Build();
             string? connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION")

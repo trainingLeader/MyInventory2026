@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyInventory2026.src.shared.context;
 
@@ -10,9 +11,11 @@ using MyInventory2026.src.shared.context;
 namespace MyInventory2026.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260409123534_ProductsMigration")]
+    partial class ProductsMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +32,6 @@ namespace MyInventory2026.Migrations
                         .HasColumnName("id");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("Description")
-                        .HasColumnType("varchar(200)")
-                        .HasColumnName("description");
 
                     b.Property<string>("codeInv")
                         .IsRequired()
@@ -88,36 +87,6 @@ namespace MyInventory2026.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("providers", (string)null);
-                });
-
-            modelBuilder.Entity("ProductEntityProviderEntity", b =>
-                {
-                    b.Property<int>("Productsid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProvidersId")
-                        .HasColumnType("varchar(64)");
-
-                    b.HasKey("Productsid", "ProvidersId");
-
-                    b.HasIndex("ProvidersId");
-
-                    b.ToTable("ProductProviders", (string)null);
-                });
-
-            modelBuilder.Entity("ProductEntityProviderEntity", b =>
-                {
-                    b.HasOne("MyInventory2026.src.modules.products.Infrastructure.Entity.ProductEntity", null)
-                        .WithMany()
-                        .HasForeignKey("Productsid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyInventory2026.src.modules.provider.Infrastructure.entity.ProviderEntity", null)
-                        .WithMany()
-                        .HasForeignKey("ProvidersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
